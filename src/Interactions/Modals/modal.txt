@@ -1,0 +1,11 @@
+import Discord, {
+    ModalSubmitInteraction,
+  } from 'discord.js';
+  
+  export default {
+    id: 'modalid',
+  
+    async execute(interaction: ModalSubmitInteraction) {
+    //////// CODE
+    },
+};

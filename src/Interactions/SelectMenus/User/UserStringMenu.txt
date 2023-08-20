@@ -1,0 +1,11 @@
+import Discord, {
+    UserSelectMenuInteraction,
+  } from 'discord.js';
+  
+  export default {
+    id: 'selectmenu-id',
+  
+    async execute(interaction: UserSelectMenuInteraction) {
+    //////// CODE
+    },
+};

@@ -1,0 +1,11 @@
+import Discord, {
+    ButtonInteraction,
+  } from 'discord.js';
+  
+  export default {
+    id: 'buttonid',
+  
+    async execute(interaction: ButtonInteraction) {
+    //////// CODE
+    },
+};

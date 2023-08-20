@@ -1,0 +1,23 @@
+{
+"name": "djs-template-ts",
+"version": "1.0.0",
+"main": "./src/index.ts",
+"license": "MIT",
+"dependencies": {
+    "@prisma/client": "^5.1.1",
+    "chalk": "4",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.4.3"
+},
+"devDependencies": {
+    "prisma": "^5.1.1"
+},
+"scripts": {
+    "dev": "ts-node-dev .",
+    "build": "tsc",
+    "start": "node build",
+    "nodemon": "npx nodemon build",
+    "prettier": "prettier --write src/**/**/*.ts"
+}
+}
