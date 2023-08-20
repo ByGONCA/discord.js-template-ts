@@ -11,11 +11,11 @@
 ## Installation, Build and Run
 1) Clone the repository then create a file named `.env` and fill it out accordingly
 ```js
-TOKEN=YOURTOKENHERE
-CLIENT_ID=BOTS CLIENT ID
-PREFIX=!
-MONGO_URI=YOUR MONGO CONNECTION STRING
-MONGO_DATABASE_NAME=YOUR DATABASE NAME
+TOKEN=YOUR_BOT_TOKEN
+PREFIX=PREFIX
+MONGO_URL=MONGO_CONNECTION_URL
+GUILD_CHANNEL_ID=GUILD_CREATE_AND_DELETE_CHANNEL_ID
+ONLINE_CHANNEL_ID=ONLINE_LOGS_CHANNEL_ID
 ```
 2) Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
