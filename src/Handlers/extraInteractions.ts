@@ -1,22 +1,37 @@
 import { Collection } from "discord.js";
-import fs from 'fs'; // Changed 'node:fs' to 'fs'
-import path from 'path'; // Changed 'node:path' to 'path'
+import fs from 'node:fs';
+import path from 'node:path';
 import { ExtraInteractions } from "../structures/interfaces/ExtraInteractions";
 import { client } from "../structures/Client/client";
 import chalk from 'chalk'
+
 
 function Interactions(
     collection: Collection<string, any>,
     folderPath: string
 ): number {
-    const files = fs.readdirSync(folderPath).filter((file) => file.endsWith('.ts'));
+    let totalFileCount = 0;
 
-    for (const file of files) {
-        const selectMenu = require(path.join(folderPath, file)).default;
-        collection.set(selectMenu.id, selectMenu);
-    }
+    const readDirectory = (currentPath: string) => {
+        const files = fs.readdirSync(currentPath);
 
-    return files.length;
+        for (const file of files) {
+            const filePath = path.join(currentPath, file);
+            const stats = fs.statSync(filePath);
+
+            if (stats.isDirectory()) {
+                readDirectory(filePath);
+            } else if (file.endsWith('.ts')) {
+                const selectMenu = require(filePath).default;
+                collection.set(selectMenu.id, selectMenu);
+                totalFileCount++;
+            }
+        }
+    };
+
+    readDirectory(folderPath);
+
+    return totalFileCount;
 }
 
 const { userselectmenu, roleselectmenu, channelselectmenu, stringselectmenu ,modal, button } = client;
@@ -45,8 +60,8 @@ const buttonFolderPath = path.resolve(__dirname, '../Interactions/Buttons');
 const buttonFileCount = Interactions(button, buttonFolderPath);
 console.log(chalk.bgHex('#6308E2')(`[ Buttons ]`) + chalk.hex('#6308E2')(` Loaded (#${buttonFileCount}) Buttons!`));
 
+async function Ignore() {
 
-async function Lmao() {
 }
 
-export default Lmao;
+export default Ignore
